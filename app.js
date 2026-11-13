@@ -98,11 +98,9 @@ function setMe(user) {
 }
 
 function logout() {
-  state.token = null;
-  state.me = null;
   localStorage.removeItem('token');
-  $('#app-view').classList.add('hidden');
-  $('#auth-view').classList.remove('hidden');
+  // full reload so no data/state from the previous user survives in the page
+  location.reload();
 }
 
 wireForm('#login-form', async (f) => {
